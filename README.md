@@ -30,10 +30,9 @@
 <img src="https://img.icons8.com/nolan/64/artificial-intelligence.png" align="left" width="70" />
   
 <blockquote>
-<b>Alenjin M | <span style="color:#16A085">MGI25</span></b>  
-🚀 Data Science student, AI trader, cyber builder  
-📍 Christ University, Lavasa, India  
-💼 Power BI Developer Intern @ REDA RAK Pvt Ltd  
+<b>Alen Jin Shibu | <span style="color:#16A085">MGI25</span></b>  
+Data Science student, AI trader, cyber builder  
+Christ University, Lavasa, India  
 </blockquote>
   
 <ul>
