@@ -68,13 +68,13 @@
   <img src="https://github-profile-trophy.vercel.app/?username=mgi25&theme=matrix&column=7&no-frame=true" />
 </p>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/mgi25/mgi25/output/github-contribution-grid-snake.svg" alt="snake anim" />
+  <img src="https://raw.githubusercontent.com/mgi25/mgi25/main/output/github-contribution-grid-snake.svg" alt="snake anim" />
 </p>
 
 ---
 
 <!-- Projects in glassy cards -->
-<h2 align="center"><b>🚀 Featured Projects</b></h2>
+<h2 align="center"><b>Featured Projects</b></h2>
 
 <table align="center">
 <tr>
