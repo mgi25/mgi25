@@ -36,9 +36,8 @@ Christ University, Lavasa, India
 </blockquote>
   
 <ul>
-  <li>🤖 AI trading, automation, quant bots, Python backends</li>
-  <li>🧬 Full stack ML | Flask | Django | Streamlit | Power BI</li>
-  <li>🌏 Vibe: Cyber-Japan × Neon × Algo Matrix</li>
+  <li>AI trading, automation, quant bots, Python backends</li>
+  <li> Full stack | ML | Flask | Django | Streamlit | Trading</li>
 </ul>
 </td>
 <td width="40%" align="center">
