@@ -2,7 +2,7 @@ name: LOC counter (all repos)
 
 on:
   schedule:
-    - cron: '0 * * * *'         # hourly; change to '0 0 * * *' for daily
+    - cron: '0 * * * *'        # hourly; change to '0 0 * * *' for daily
   workflow_dispatch:
 
 concurrency:
@@ -16,74 +16,86 @@ jobs:
       contents: write
     env:
       OWNER: mgi25
-      # Match ALL your commit identities (case-insensitive).
+      # Match ALL identities you might have used (case-insensitive).
       MAILRE: >-
         Alen Jin Shibu|
         alenjinmgi@gmail\.com|
         mgi25@users\.noreply\.github\.com|
         [0-9]+\+mgi25@users\.noreply\.github\.com|
         mgi25
-      SINCE: ''                 # keep empty for lifetime totals
-      DEBUG: 'true'             # set to 'false' to silence debug prints
+      SINCE: ''                # leave empty for lifetime totals
+      DEBUG: 'true'            # set 'false' to quiet logs
 
     steps:
       - uses: actions/checkout@v4
 
       - name: Install jq
+        shell: bash
         run: |
-          set -euo pipefail
           sudo apt-get update -y
           sudo apt-get install -y jq
 
-      - name: Build repository list (HTTPS)
+      - name: Build repository list (HTTPS; supports private if LOC_PAT present)
+        shell: bash
         env:
-          GH_TOKEN: ${{ secrets.LOC_PAT }}      # optional; enables private repos
+          TOKEN: ${{ secrets.LOC_PAT }}    # optional; include to count PRIVATE repos
         run: |
-          set -euo pipefail
+          set -e
           : > repo_list.txt
 
-          if command -v gh >/dev/null 2>&1; then
-            if [ -n "${GH_TOKEN:-}" ]; then
-              echo "$GH_TOKEN" | gh auth login --with-token
+          # Use REST API (simple, reliable). Auth if TOKEN present to raise rate limits & see private.
+          page=1
+          while :; do
+            if [ -n "$TOKEN" ]; then
+              RESP=$(curl -fsSL \
+                -H "Authorization: Bearer $TOKEN" \
+                -H "X-GitHub-Api-Version: 2022-11-28" \
+                "https://api.github.com/users/$OWNER/repos?per_page=100&page=$page&type=owner")
+            else
+              RESP=$(curl -fsSL "https://api.github.com/users/$OWNER/repos?per_page=100&page=$page&type=owner")
             fi
-            gh repo list "$OWNER" --limit 300 --json cloneUrl,isFork,archived \
-              | jq -r '.[] | select((.archived|not) and (.isFork|not)) | .cloneUrl' >> repo_list.txt
-          else
-            # Public repos via REST; use Authorization if a token exists (raises rate limit).
-            page=1
-            while :; do
-              if [ -n "${GH_TOKEN:-}" ]; then
-                resp=$(curl -fsSL -H "Authorization: Bearer $GH_TOKEN" \
-                               -H "X-GitHub-Api-Version: 2022-11-28" \
-                               "https://api.github.com/users/$OWNER/repos?per_page=100&page=$page&type=owner")
-              else
-                resp=$(curl -fsSL "https://api.github.com/users/$OWNER/repos?per_page=100&page=$page&type=owner")
-              fi
-              n=$(echo "$resp" | jq 'length')
-              [ "$n" -eq 0 ] && break
-              echo "$resp" | jq -r '.[] | select((.archived|not) and (.fork|not)) | .clone_url' >> repo_list.txt
-              page=$((page+1))
-            done
-          fi
 
+            COUNT=$(echo "$RESP" | jq 'length')
+            [ "$COUNT" -eq 0 ] && break
+
+            echo "$RESP" \
+              | jq -r '.[] | select((.archived|not) and (.fork|not)) | .clone_url' \
+              >> repo_list.txt
+
+            page=$((page+1))
+          done
+
+          # Deduplicate and show
           sort -u repo_list.txt -o repo_list.txt
           echo "Repo count: $(wc -l < repo_list.txt)"
-          [ "$DEBUG" = "true" ] && { echo "Repos:"; nl -ba repo_list.txt; }
+          if [ "$DEBUG" = "true" ]; then
+            echo "----- repositories -----"
+            nl -ba repo_list.txt || true
+            echo "------------------------"
+          fi
 
       - name: Compute LOC
+        shell: bash
         env:
-          TOKEN: ${{ secrets.LOC_PAT }}         # optional; used for private clones
+          TOKEN: ${{ secrets.LOC_PAT }}    # optional; used to clone PRIVATE repos
         run: |
-          set -euo pipefail
+          set -e
           mkdir -p work
           add=0; del=0
 
+          # If no repos, still update README with zeros
+          if [ ! -s repo_list.txt ]; then
+            echo "No repositories found to scan."
+            printf "ADD=0\nDEL=0\nNET=0\nTOUCHED=0\n" | tee loc.env
+            exit 0
+          fi
+
           while read -r url; do
             [ -n "$url" ] || continue
-            # Inject token for private repositories if provided
-            if [ -n "${TOKEN:-}" ]; then
+
+            # Inject token for private repos if provided
+            if [ -n "$TOKEN" ]; then
               url="${url/https:\/\//https:\/\/x-access-token:$TOKEN@}"
-            end_if_marker=1
             fi
 
             repo=$(basename "$url" .git)
@@ -94,12 +106,14 @@ jobs:
             fi
 
             cd "work/$repo"
+            # Ensure full history (in case a shallow clone occurred)
+            git fetch --unshallow >/dev/null 2>&1 || true
             git fetch --all --quiet
 
             sinceOpt=""
             [ -n "$SINCE" ] && sinceOpt="--since=$SINCE"
 
-            # Count additions/deletions for your authors (case-insensitive, mailmap-aware)
+            # Sum additions/deletions from your commits (mailmap-aware, case-insensitive)
             git log --use-mailmap --all --regexp-ignore-case $sinceOpt \
               --author="$MAILRE" --pretty=tformat: --numstat \
             | awk '($1 ~ /^[0-9]+$/ && $2 ~ /^[0-9]+$/){a+=$1; d+=$2} END{printf "%d %d\n",a,d}' > /tmp/one
@@ -107,17 +121,19 @@ jobs:
             read a d < /tmp/one
             add=$((add+a)); del=$((del+d))
             cd - >/dev/null
-          done < repo_list.txt        # ✅ FIXED: correct path (was ../repo_list.txt)
+          done < repo_list.txt
 
           net=$((add-del)); touched=$((add+del))
           printf "ADD=%d\nDEL=%d\nNET=%d\nTOUCHED=%d\n" $add $del $net $touched | tee loc.env
 
       - name: Update README section
+        shell: bash
         run: |
-          set -euo pipefail
+          set -e
           . ./loc.env
           ts=$(date -u +'%Y-%m-%d %H:%M UTC')
-          # format with thousands separators
+
+          # thousands separators
           fmt() { printf "%'d" "$1"; }
           ADD_F=$(fmt "$ADD"); DEL_F=$(fmt "$DEL"); NET_F=$(fmt "$NET"); TCH_F=$(fmt "$TOUCHED")
 
@@ -137,8 +153,8 @@ jobs:
           ' README.md > README.tmp && mv README.tmp README.md
 
       - name: Commit changes (if any)
+        shell: bash
         run: |
-          set -euo pipefail
           if git diff --quiet; then
             echo "No changes to commit."
             exit 0
@@ -148,3 +164,14 @@ jobs:
           git add README.md
           git commit -m "chore: update LOC counters [skip ci]"
           git push
+
+      - name: (Debug) Show author identities encountered
+        if: env.DEBUG == 'true'
+        shell: bash
+        run: |
+          if [ -d work ]; then
+            echo "Possible commit identities found:"
+            find work -maxdepth 2 -type d -name ".git" -printf '%h\n' | while read -r repo; do
+              ( cd "$repo" && git log --all --pretty='%aN <%aE>' | grep -Ei 'alen|shibu|mgi25|gmail' || true )
+            done | sort -u
+          fi
