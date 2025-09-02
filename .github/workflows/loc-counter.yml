@@ -1,0 +1,79 @@
+name: LOC counter (all repos)
+
+on:
+  schedule:
+    - cron: '0 * * * *'     # hourly; change to '0 0 * * *' for daily
+  workflow_dispatch:
+
+jobs:
+  count:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      OWNER: mgi25
+      # Match your identities; add more with |
+      AUTHOR_REGEX: 'mgi25|alenjinmgi@gmail.com'
+      INCLUDE_FORKS: 'false'      # set 'true' to include forks
+      SINCE: ''                   # e.g., '2025-01-01' to limit by date
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Authenticate gh
+        env:
+          GH_TOKEN: ${{ secrets.LOC_PAT != '' && secrets.LOC_PAT || github.token }}
+        run: |
+          echo "$GH_TOKEN" | gh auth login --with-token
+
+      - name: List repositories
+        run: |
+          gh repo list "$OWNER" --limit 200 --json sshUrl,isFork,archived \
+            | jq -r '.[] | select((.archived|not) and (.isFork|not)) | .sshUrl' > repo_list.txt
+          wc -l repo_list.txt
+
+      - name: Compute LOC
+        run: |
+          mkdir work
+          add=0; del=0
+          while read -r url; do
+            [ -n "$url" ] || continue
+            repo=$(basename "$url" .git)
+            git clone --filter=tree:0 --no-tags "$url" "work/$repo" >/dev/null 2>&1 || continue
+            cd "work/$repo"
+            git fetch --unshallow >/dev/null 2>&1 || true
+            sinceOpt=""
+            [ -n "$SINCE" ] && sinceOpt="--since=$SINCE"
+            # Sum additions/deletions from YOUR commits
+            git log --all $sinceOpt --author="$AUTHOR_REGEX" --pretty=tformat: --numstat \
+            | awk '($1 ~ /^[0-9]+$/ && $2 ~ /^[0-9]+$/){a+=$1; d+=$2} END{printf "%d %d\n",a,d}' > /tmp/loc_one
+            read a d < /tmp/loc_one
+            add=$((add+a)); del=$((del+d))
+            cd ../..
+          done < repo_list.txt
+          net=$((add-del)); touched=$((add+del))
+          printf "ADD=%d\nDEL=%d\nNET=%d\nTOUCHED=%d\n" $add $del $net $touched | tee loc.env
+
+      - name: Update README section
+        run: |
+          # Format with thousands separators
+          fmt() { printf "%'d" "$1"; }
+          eval $(cat loc.env)
+          ts=$(date -u +'%Y-%m-%d %H:%M UTC')
+          ADD_F=$(fmt "$ADD"); DEL_F=$(fmt "$DEL"); NET_F=$(fmt "$NET"); TCH_F=$(fmt "$TOUCHED")
+          awk -v add="$ADD_F" -v del="$DEL_F" -v net="$NET_F" -v tch="$TCH_F" -v ts="$ts" '
+            BEGIN{ins=0}
+            /<!-- LOC:START -->/ {print; print "**Lines added:** " add "  "; print "**Lines removed:** " del "  "; print "**Net:** " net "  "; print "**Touched:** " tch "  "; print "<sub>Updated " ts "</sub>"; skip=1; next}
+            /<!-- LOC:END -->/ {skip=0}
+            skip!=1 {print}
+          ' README.md > README.tmp && mv README.tmp README.md
+
+      - name: Commit changes (if any)
+        run: |
+          if git diff --quiet; then
+            echo "No change"; exit 0
+          fi
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add README.md
+          git commit -m "chore: update LOC counters [skip ci]"
+          git push
