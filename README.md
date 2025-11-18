@@ -2,7 +2,7 @@
 
 <!-- ═══════════════════════════════════════ HERO ═══════════════════════════════════════ -->
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:020024,100:16A085&height=170&section=header&text=MGI25%20%C2%B7%20Cybernetic%20Architect&fontSize=48&fontAlignY=60&fontColor=E5FF70&desc=Automation%20%7C%20AI%20Trading%20%7C%20Neural%20Backends&descAlignY=80&animation=fadeIn" alt="MGI25 hero banner" />
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:020024,100:16A085&height=170&section=header&text=MGI%20%C2%B7%20Cybernetic%20Architect&fontSize=48&fontAlignY=60&fontColor=E5FF70&desc=Automation%20%7C%20AI%20Trading%20%7C%20Neural%20Backends&descAlignY=80&animation=fadeIn" alt="MGI25 hero banner" />
 </p>
 
 <div align="center">
