@@ -145,19 +145,7 @@ I work on <b>ML models for trading</b>, <b>trading bots</b>, <b>data-driven appl
 
 ---
 
-<h2 align="center">Featured Repositories</h2>
 
-<p align="center">
-  <a href="https://github.com/mgi25?tab=repositories">
-    <img src="https://img.shields.io/badge/Explore%20My%20Projects-0F766E?style=for-the-badge&logo=github&logoColor=white" alt="Explore projects" />
-  </a>
-</p>
-
-<p align="center">
-  Add your best repositories here later with short one-line descriptions for a stronger portfolio look.
-</p>
-
----
 
 <h2 align="center">Connect</h2>
 
