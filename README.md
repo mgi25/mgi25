@@ -1,11 +1,11 @@
-<!-- README.md for github.com/mgi25 -->
+<!-- Profile README for github.com/mgi25 -->
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=240&color=0:0B1020,50:111827,100:0F766E&text=Alen%20Jin%20Shibu&fontColor=F8FAFC&fontSize=42&fontAlignY=38&desc=Data%20Scientist%20•%20Trader%20•%20Full-Stack%20Developer&descSize=18&descAlignY=58&animation=fadeIn" alt="header" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=240&color=0:0B1020,50:111827,100:0F766E&text=Alen%20Jin%20Shibu&fontSize=42&fontColor=F8FAFC&fontAlignY=38&desc=Data%20Scientist%20•%20Trader%20•%20Full-Stack%20Developer&descSize=18&descAlignY=58&animation=fadeIn" alt="header" />
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=IBM+Plex+Mono&weight=500&size=18&duration=2600&pause=1000&color=14B8A6&center=true&vCenter=true&width=900&lines=Building+ML+models%2C+trading+bots%2C+and+full-stack+applications;Turning+data+into+systems%2C+automation%2C+and+usable+products;Python+%7C+Machine+Learning+%7C+Trading+Systems+%7C+Web+Development" alt="typing intro" />
+  <img src="https://readme-typing-svg.demolab.com?font=IBM+Plex+Mono&pause=1400&color=14B8A6&center=true&vCenter=true&width=900&lines=Building+ML+models%2C+trading+bots%2C+and+full-stack+applications;Focused+on+data%2C+automation%2C+analytics%2C+and+market+systems;Turning+ideas+into+practical+and+scalable+software" alt="typing intro" />
 </p>
 
 <p align="center">
@@ -16,86 +16,90 @@
     <img src="https://img.shields.io/badge/LinkedIn-Alen%20Jin%20Shibu-0F766E?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
   </a>
   <a href="https://github.com/mgi25?tab=repositories">
-    <img src="https://img.shields.io/badge/Repositories-Explore-0B1020?style=for-the-badge&logo=github&logoColor=white" alt="Repositories" />
+    <img src="https://img.shields.io/badge/Repositories-0B1020?style=for-the-badge&logo=github&logoColor=white" alt="Repositories" />
   </a>
 </p>
 
+---
+
+<h2 align="center">About Me</h2>
+
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=mgi25&label=Profile%20Views&color=0f766e&style=flat" alt="profile views" />
+I am a <b>Data Scientist, Trader, and Full-Stack Developer</b> with a strong interest in building practical systems across
+machine learning, trading automation, analytics, and web development.
+</p>
+
+<p align="center">
+I work on <b>ML models for trading</b>, <b>trading bots</b>, <b>data-driven applications</b>, <b>backend systems</b>, and <b>full-stack products</b> that are designed to be clean, scalable, and performance-focused.
 </p>
 
 ---
 
-## About Me
+<h2 align="center">Core Focus</h2>
 
-I am a **Data Scientist, Trader, and Full-Stack Developer** focused on building practical systems that combine data, automation, machine learning, and software engineering.
-
-My work includes:
-
-- machine learning models
-- trading bots and trading automation
-- strategy logic and data-driven systems
-- backend development and APIs
-- full-stack web applications
-- dashboards and analytics tools
-
-I like building systems that are fast, structured, scalable, and useful in real-world workflows.
-
----
-
-## Core Focus
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Data%20Science-ML%20Models%20%7C%20Analytics%20%7C%20Prediction-111827?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Trading-Bots%20%7C%20Automation%20%7C%20Strategy%20Systems-0F766E?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Full--Stack-APIs%20%7C%20Dashboards%20%7C%20Web%20Apps-0B1020?style=for-the-badge" />
-</p>
-
-<table align="center">
-  <tr>
-    <td width="33%" valign="top">
-      <h3 align="center">Data Science</h3>
-      <p align="center">
-        Machine learning, predictive modeling, analytics, experimentation, and data-driven decision systems.
-      </p>
-    </td>
-    <td width="33%" valign="top">
-      <h3 align="center">Trading Systems</h3>
-      <p align="center">
-        Trading bots, market automation, ML for trading, strategy development, and execution workflows.
-      </p>
-    </td>
-    <td width="33%" valign="top">
-      <h3 align="center">Full-Stack Development</h3>
-      <p align="center">
-        Backend systems, APIs, dashboards, frontend integration, and complete application development.
-      </p>
-    </td>
-  </tr>
-</table>
+<div align="center">
+  <table>
+    <tr>
+      <td width="33%" align="center">
+        <h3>Machine Learning</h3>
+        <sub>Predictive models, analytics, experimentation, and data-driven decision systems.</sub>
+      </td>
+      <td width="33%" align="center">
+        <h3>Trading Systems</h3>
+        <sub>Trading bots, ML for trading, automation workflows, and strategy-focused development.</sub>
+      </td>
+      <td width="33%" align="center">
+        <h3>Full-Stack Development</h3>
+        <sub>Web apps, APIs, dashboards, backend architecture, and complete product workflows.</sub>
+      </td>
+    </tr>
+  </table>
+</div>
 
 ---
 
-## Tech Stack
+<h2 align="center">Tech Stack</h2>
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=python,flask,django,fastapi,streamlit,react,js,html,css,tailwind,postgres,mysql,sqlite,docker,git,github,linux,pandas,numpy,matplotlib,plotly&theme=dark" alt="tech stack" />
+  <img src="https://skillicons.dev/icons?i=python,flask,django,fastapi,streamlit,react,js,html,css,tailwind,postgres,mysql,sqlite,docker,git,github,linux,pandas,numpy,matplotlib&theme=dark" alt="tech stack" />
 </p>
 
 ---
 
-## What I Build
+<h2 align="center">What I Build</h2>
 
-- ML models for prediction and analysis
-- trading bots and market automation systems
-- Python tools and backend services
-- dashboards and data applications
-- APIs and full-stack products
-- research, strategy, and execution workflows
+<p align="center">
+  ML models • Trading bots • Strategy automation • Data dashboards • Backend systems • Full-stack applications
+</p>
+
+<div align="center">
+  <table>
+    <tr>
+      <td width="50%" valign="top">
+        <h3>Data & ML</h3>
+        <ul>
+          <li>Machine learning pipelines</li>
+          <li>Predictive modeling</li>
+          <li>Data analysis and experimentation</li>
+          <li>Analytics and reporting systems</li>
+        </ul>
+      </td>
+      <td width="50%" valign="top">
+        <h3>Software & Trading</h3>
+        <ul>
+          <li>Trading bots and automation tools</li>
+          <li>ML models for trading systems</li>
+          <li>Backend APIs and web apps</li>
+          <li>Dashboards and monitoring workflows</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</div>
 
 ---
 
-## GitHub Analytics
+<h2 align="center">GitHub Analytics</h2>
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=mgi25&show_icons=true&hide_border=true&bg_color=00000000&title_color=14B8A6&icon_color=14B8A6&text_color=CBD5E1&rank_icon=github" width="48%" alt="GitHub stats" />
@@ -104,7 +108,6 @@ I like building systems that are fast, structured, scalable, and useful in real-
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mgi25&layout=compact&hide_border=true&bg_color=00000000&title_color=14B8A6&text_color=CBD5E1" width="38%" alt="Top languages" />
-  <img src="https://github-profile-trophy.vercel.app/?username=mgi25&theme=algolia&no-frame=true&no-bg=true&column=3&margin-w=10&margin-h=10" width="58%" alt="Trophies" />
 </p>
 
 <p align="center">
@@ -113,52 +116,62 @@ I like building systems that are fast, structured, scalable, and useful in real-
 
 ---
 
-## Current Direction
+<h2 align="center">Current Direction</h2>
 
-<table align="center">
-  <tr>
-    <td width="50%" valign="top">
-      <h3>Trading + ML</h3>
-      <ul>
-        <li>strategy-driven trading bots</li>
-        <li>market automation</li>
-        <li>ML models for trading decisions</li>
-        <li>performance-focused system design</li>
-      </ul>
-    </td>
-    <td width="50%" valign="top">
-      <h3>Software + Products</h3>
-      <ul>
-        <li>full-stack web applications</li>
-        <li>backend APIs and workflows</li>
-        <li>dashboards and analytics</li>
-        <li>automation and scalable tooling</li>
-      </ul>
-    </td>
-  </tr>
-</table>
+<div align="center">
+  <table>
+    <tr>
+      <td width="50%" valign="top">
+        <h3>Trading & Quant Work</h3>
+        <ul>
+          <li>Trading bot development</li>
+          <li>ML-based trading models</li>
+          <li>Strategy testing and automation</li>
+          <li>Performance monitoring systems</li>
+        </ul>
+      </td>
+      <td width="50%" valign="top">
+        <h3>Product & Engineering</h3>
+        <ul>
+          <li>Full-stack application development</li>
+          <li>Backend and API design</li>
+          <li>Dashboards and data systems</li>
+          <li>Clean and scalable software workflows</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</div>
 
 ---
 
-## Featured Repositories
+<h2 align="center">Featured Repositories</h2>
 
 <p align="center">
   <a href="https://github.com/mgi25?tab=repositories">
-    <img src="https://img.shields.io/badge/View%20My%20Projects-0F766E?style=for-the-badge&logo=github&logoColor=white" alt="View projects" />
+    <img src="https://img.shields.io/badge/Explore%20My%20Projects-0F766E?style=for-the-badge&logo=github&logoColor=white" alt="Explore projects" />
   </a>
 </p>
 
-> You can replace this section later with your 3 to 6 best repositories and one-line descriptions for each.
+<p align="center">
+  Add your best repositories here later with short one-line descriptions for a stronger portfolio look.
+</p>
 
 ---
 
-## Connect
+<h2 align="center">Connect</h2>
 
 <p align="center">
   <a href="mailto:alenjinmgi@gmail.com">
-    <img src="https://img.shields.io/badge/Gmail-alenjinmgi%40gmail.com-111827?style=for-the-badge&logo=gmail&logoColor=white" alt="gmail" />
+    <img src="https://img.shields.io/badge/Gmail-alenjinmgi%40gmail.com-111827?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail" />
   </a>
   <a href="https://www.linkedin.com/in/alen-jin-shibu/">
-    <img src="https://img.shields.io/badge/LinkedIn-alen--jin--shibu-0F766E?style=for-the-badge&logo=linkedin&logoColor=white" alt="linkedin" />
+    <img src="https://img.shields.io/badge/LinkedIn-Visit%20Profile-0F766E?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
   </a>
+</p>
+
+---
+
+<p align="center">
+  <b>Building with data, automation, and disciplined systems.</b>
 </p>
