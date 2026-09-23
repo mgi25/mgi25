@@ -1,0 +1,70 @@
+<svg width="1200" height="360" viewBox="0 0 1200 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Alen Jin Shibu</title>
+  <desc id="desc">Data scientist and systems builder working across artificial intelligence, markets, simulation, and automation.</desc>
+  <defs>
+    <linearGradient id="background" x1="48" y1="24" x2="1136" y2="344" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#07111F" />
+      <stop offset="0.52" stop-color="#0F172A" />
+      <stop offset="1" stop-color="#063B3B" />
+    </linearGradient>
+    <linearGradient id="accent" x1="180" y1="90" x2="940" y2="298" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38BDF8" />
+      <stop offset="0.52" stop-color="#2DD4BF" />
+      <stop offset="1" stop-color="#A7F3D0" />
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="translate(1010 164) rotate(143) scale(310 270)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14B8A6" stop-opacity="0.32" />
+      <stop offset="1" stop-color="#14B8A6" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" stroke="#94A3B8" stroke-opacity="0.08" />
+    </pattern>
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="7" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <clipPath id="frame">
+      <rect width="1200" height="360" rx="28" />
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="1200" height="360" fill="url(#background)" />
+    <rect width="1200" height="360" fill="url(#grid)" />
+    <rect width="1200" height="360" fill="url(#glow)" />
+    <path d="M0 313C205 250 351 351 570 301C780 253 964 215 1200 276V360H0V313Z" fill="#0D9488" fill-opacity="0.08" />
+    <path d="M0 331C224 273 381 365 596 320C823 272 994 255 1200 300" stroke="url(#accent)" stroke-opacity="0.2" stroke-width="2" />
+
+    <g opacity="0.92">
+      <rect x="68" y="62" width="190" height="30" rx="15" fill="#0F2B3B" stroke="#38BDF8" stroke-opacity="0.42" />
+      <circle cx="88" cy="77" r="5" fill="#2DD4BF" filter="url(#softGlow)" />
+      <text x="104" y="82" fill="#BAE6FD" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2">SYSTEMS ONLINE</text>
+    </g>
+
+    <text x="68" y="158" fill="#F8FAFC" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="57" font-weight="800" letter-spacing="-1.5">Alen Jin Shibu</text>
+    <rect x="69" y="179" width="126" height="4" rx="2" fill="url(#accent)" />
+    <text x="68" y="226" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="21" font-weight="500" letter-spacing="0.4">Intelligent systems. Data products. Automation.</text>
+    <text x="68" y="268" fill="#5EEAD4" font-family="SFMono-Regular, Consolas, Liberation Mono, monospace" font-size="15" font-weight="600" letter-spacing="1.3">AI ENGINEERING  /  MARKETS  /  SIMULATION  /  FULL-STACK</text>
+
+    <g transform="translate(868 38)">
+      <circle cx="145" cy="140" r="104" stroke="#38BDF8" stroke-opacity="0.15" />
+      <circle cx="145" cy="140" r="76" stroke="#2DD4BF" stroke-opacity="0.34" stroke-dasharray="7 9" />
+      <circle cx="145" cy="140" r="46" fill="#082F35" stroke="#5EEAD4" stroke-opacity="0.66" />
+      <path d="M123 147L138 162L171 121" stroke="#5EEAD4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#softGlow)" />
+      <circle cx="145" cy="36" r="8" fill="#38BDF8" />
+      <circle cx="70" cy="191" r="7" fill="#2DD4BF" />
+      <circle cx="218" cy="190" r="7" fill="#A7F3D0" />
+      <path d="M145 44V92M77 187L107 167M211 187L181 167" stroke="#5EEAD4" stroke-opacity="0.55" stroke-width="2" />
+      <rect x="16" y="248" width="258" height="48" rx="12" fill="#07111F" fill-opacity="0.72" stroke="#2DD4BF" stroke-opacity="0.28" />
+      <circle cx="37" cy="272" r="4" fill="#2DD4BF" />
+      <text x="51" y="277" fill="#94A3B8" font-family="SFMono-Regular, Consolas, Liberation Mono, monospace" font-size="13">BUILD → TEST → EVALUATE → SHIP</text>
+    </g>
+
+    <circle cx="1146" cy="48" r="96" fill="#38BDF8" fill-opacity="0.04" />
+    <circle cx="15" cy="12" r="102" fill="#2DD4BF" fill-opacity="0.035" />
+  </g>
+  <rect x="1" y="1" width="1198" height="358" rx="27" stroke="url(#accent)" stroke-opacity="0.25" stroke-width="2" />
+</svg>
